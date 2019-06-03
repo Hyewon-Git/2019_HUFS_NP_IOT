@@ -1,9 +1,9 @@
 import os
 import django
 from django.utils import timezone
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djsite.settings")
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djsite.settings')
 django.setup()
-from djapp.models import Searchdb
+from .djapp.models import Searchdb
 import socketserver, json
 import logging
 import time
@@ -21,7 +21,7 @@ class IoTRequestHandler(socketserver.StreamRequestHandler):
                 # reply ERROR response message
                 error_msg = '{}: json decoding error'.format(e)
                 status = 'ERROR {}'.format(error_msg)
-                response = dict(status=status, deviceid=request.get('deviceid'),
+                response = dict(status=status, deviceid= request.get('deviceid'),
                                 msgid=request.get('msgid'))
                 response = json.dumps(response)
                 self.wfile.write(response.encode('utf-8') + b'\n')
