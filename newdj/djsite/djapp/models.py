@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Searchdb(models.Model):
-    timedata = models.CharField(max_length=255)
+    timedata = models.DateTimeField()
     distance = models.FloatField()
 
     class Meta:
