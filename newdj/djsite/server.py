@@ -37,7 +37,7 @@ class IoTRequestHandler(socketserver.StreamRequestHandler):
             if data:        # data exists
                 distance = float(data.get('distance'))
                 #print(distance)
-                Searchdb(distance=distance, pub_date=timezone.now()).save()
+                Searchdb(distance=distance, pub_date=str(timezone.now())).save()
 
             # Insert sensor data into DB tables
 
